@@ -33,7 +33,7 @@ function paintColor(randomNum, ball) {
 
 function drawBall(randomNum, parent) {
   const ball = document.createElement("div");
-  ball.classList = "lotto-ball";
+  ball.className = "lotto-ball";
   paintColor(randomNum, ball);
   ball.innerText = randomNum;
   parent.appendChild(ball);
