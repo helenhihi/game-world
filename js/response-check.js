@@ -3,6 +3,7 @@ const result = document.querySelector("#result");
 
 let startTime;
 let endTime;
+const records = [];
 screen.addEventListener("click", (event) => { // screen과 event.target이 같음
   if (event.target.classList.contains("waiting")) { // 파랑
     screen.classList.replace("waiting", "ready");
@@ -20,5 +21,19 @@ screen.addEventListener("click", (event) => { // screen과 event.target이 같�
     endTime = new Date();
     const current = endTime - startTime;
     console.log(endTime, startTime);
+    records.push(current);
+    const average = records.reduce((p, c) => p + c) / records.length;
+    result.innerText = `현재: ${current}ms, 평균: ${average}ms`;
+    const topFive = records.sort((p, c) => p - c).slice(0, 5);
+    topFive.forEach((top, index) => {
+      result.append(
+        document.createElement("br"),
+        `${index + 1}위: ${top}ms`,
+      );
+    });
+    startTime = null;
+    endTime = null;
+    screen.classList.replace("now", "waiting");
+    screen.innerText = "클릭해서 시작하세요";
   }
 });
