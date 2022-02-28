@@ -33,7 +33,15 @@ class Game {
     }];
     this.start(name);
   }
-  
+  start(name) {
+    console.log(this);
+    gameMenu.addEventListener("submit", this.onGameMenuInput);
+    battleMenu.addEventListener("submit", this.onBattleMenuInput);
+    this.changeScreen("game");
+    this.hero = new Hero(this, name);
+    // console.log(this.hero);
+    this.updateHeroStat();
+  }
 }
 
 let game = null;
