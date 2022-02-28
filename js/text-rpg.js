@@ -42,6 +42,22 @@ class Game {
     // console.log(this.hero);
     this.updateHeroStat();
   }
+  changeScreen(screen) {
+    if (screen === "start") {
+      startScreen.classList.remove("hidden");
+      gameMenu.classList.add("hidden");
+      battleMenu.classList.add("hidden");
+    } else if (screen === "game") {
+      startScreen.classList.add("hidden");
+      gameMenu.classList.remove("hidden");
+      battleMenu.classList.add("hidden");
+    } else if (screen === "battle") {
+      startScreen.classList.add("hidden");
+      gameMenu.classList.add("hidden");
+      battleMenu.classList.remove("hidden");
+    } 
+  } 
+
 }
 
 let game = null;
